@@ -38,18 +38,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include: # one OS per personality: exports are the most platform-sensitive, predict/val exercise macOS spawn multiprocessing
-          - personality: train
-            os: ubuntu-latest
+        include: # fork-only: ARM64 Linux, the one platform upstream's daily matrix does not fuzz
+          - personality: chaos
+            os: ubuntu-24.04-arm
             extras: export-base,export-openvino,solutions
           - personality: export
-            os: windows-latest
-            extras: export-base,export-openvino,solutions
-          - personality: predict-val
-            os: macos-26
-            extras: export-base,export-openvino,export-coreml,solutions
-          - personality: chaos
-            os: ubuntu-latest
+            os: ubuntu-24.04-arm
             extras: export-base,export-openvino,solutions
     defaults:
       run:
