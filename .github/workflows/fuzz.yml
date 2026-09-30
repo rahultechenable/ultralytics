@@ -39,10 +39,10 @@ jobs:
       fail-fast: false
       matrix:
         include: # fork-only: ARM64 Linux, the one platform upstream's daily matrix does not fuzz
-          - personality: chaos
+          - personality: train
             os: ubuntu-24.04-arm
             extras: export-base,export-openvino,solutions
-          - personality: export
+          - personality: predict-val
             os: ubuntu-24.04-arm
             extras: export-base,export-openvino,solutions
     defaults:
